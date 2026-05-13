@@ -1,11 +1,10 @@
 import { supabase } from '@/lib/supabase'
 export const dynamic = 'force-dynamic'
+
 async function getContent() {
-  const { data, error } = await supabase.from('content').select('section, key, value')
-  console.log('Supabase data:', JSON.stringify(data))
-  console.log('Supabase error:', error)
+  const { data } = await supabase.from('content').select('section, key, value')
   const content: Record<string, Record<string, string>> = {}
-  data?.forEach(({ section, key, value }) => {
+  data?.forEach(({ section, key, value }: { section: string; key: string; value: string }) => {
     if (!content[section]) content[section] = {}
     content[section][key] = value
   })
@@ -15,33 +14,42 @@ async function getContent() {
 export default async function Home() {
   const content = await getContent()
   const hero = content.hero || {}
+  const navbar = content.navbar || {}
+  const offer = content.offer || {}
+  const services = content.services || {}
+  const process = content.process || {}
+  const cta = content.cta || {}
+  const footer = content.footer || {}
+  const problem = content.problem || {}
 
   return (
     <>
       <nav>
         <a href="#" className="logo">
-        <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
-        Automaly.pl
+          <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
+          {navbar.logo || 'Automaly.pl'}
         </a>
         <ul className="nav-links">
-          <li><a href="#uslugi">Usługi</a></li>
-          <li><a href="#proces">Jak działamy</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
+          <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
+          <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
         </ul>
-        <a href="#kontakt" className="btn-nav">Darmowe demo →</a>
+        <a href="#kontakt" className="btn-nav">{navbar.cta || 'Darmowe demo →'}</a>
       </nav>
 
       <section style={{ paddingTop: '64px' }}>
         <div className="hero">
           <div>
-            <div className="hero-eyebrow"><span className="hero-eyebrow-dot"></span> Automatyzacja · AI · Strony www</div>
+            <div className="hero-eyebrow">
+              <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony www'}
+            </div>
             <h1 dangerouslySetInnerHTML={{ __html: hero.headline || 'Przestań robić rzeczy, które zrobi za Ciebie <em>AI</em>' }} />
             <p className="hero-sub">{hero.subheading || 'Budujemy automatyzacje, strony internetowe i wdrażamy AI dla małych i średnich firm w Polsce.'}</p>
             <div className="hero-cta">
-              <a href="#kontakt" className="btn-primary">Zamów bezpłatne demo →</a>
-              <a href="#proces" className="btn-secondary">Jak to działa?</a>
+              <a href="#kontakt" className="btn-primary">{hero.cta_primary || 'Zamów bezpłatne demo →'}</a>
+              <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
             </div>
-            <div className="risk-badge">Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.</div>
+            <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
           </div>
           <div className="hero-visual">
             <div className="hero-demo-label">Przykład — automatyzacja sprzedaży</div>
@@ -60,8 +68,8 @@ export default async function Home() {
 
       <section className="problem" id="problem">
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-          <div className="section-label">Czy to brzmi znajomo?</div>
-          <h2>Tracisz godziny na rzeczy,<br />które robi za Ciebie automat</h2>
+          <div className="section-label">{problem.eyebrow || 'Czy to brzmi znajomo?'}</div>
+          <h2 dangerouslySetInnerHTML={{ __html: problem.headline || 'Tracisz godziny na rzeczy,<br>które robi za Ciebie automat' }} />
         </div>
         <div className="problem-grid">
           <div>
@@ -88,8 +96,8 @@ export default async function Home() {
       </section>
 
       <section className="offer-band" id="demo">
-        <h2 className="offer-headline">Zanim zapłacisz choć złotówkę — zobaczysz działające rozwiązanie dla Twojej firmy</h2>
-        <p className="offer-sub">Nie sprzedajemy obietnic. Pokazujemy konkretne demo dopasowane do Twoich procesów.</p>
+        <h2 className="offer-headline" dangerouslySetInnerHTML={{ __html: offer.headline || 'Zanim zapłacisz choć złotówkę — zobaczysz działające rozwiązanie dla Twojej firmy' }} />
+        <p className="offer-sub">{offer.subheading || 'Nie sprzedajemy obietnic. Pokazujemy konkretne demo dopasowane do Twoich procesów.'}</p>
         <div className="offer-steps">
           <div className="offer-step"><div className="offer-step-num">1</div><div className="offer-step-title">Bezpłatna rozmowa</div><div className="offer-step-desc">30 minut. Opowiesz nam jak wygląda Twój dzień.</div></div>
           <div className="offer-step"><div className="offer-step-num">2</div><div className="offer-step-title">Gotowe demo</div><div className="offer-step-desc">Budujemy działający prototyp. Bezpłatnie.</div></div>
@@ -101,8 +109,8 @@ export default async function Home() {
 
       <section className="services" id="uslugi">
         <div className="services-header">
-          <div className="section-label">Czym się zajmujemy</div>
-          <h2>Wszystko, czego Twoja firma<br />potrzebuje, żeby działać sprawniej</h2>
+          <div className="section-label">{services.eyebrow || 'Czym się zajmujemy'}</div>
+          <h2 dangerouslySetInnerHTML={{ __html: services.headline || 'Wszystko, czego Twoja firma<br>potrzebuje, żeby działać sprawniej' }} />
         </div>
         <div className="services-grid">
           {[
@@ -125,8 +133,8 @@ export default async function Home() {
       <section className="process" id="proces">
         <div className="process-inner">
           <div className="process-header">
-            <div className="section-label">Jak działamy</div>
-            <h2>Od pierwszej rozmowy do działającego<br />systemu — w 4 krokach</h2>
+            <div className="section-label">{process.eyebrow || 'Jak działamy'}</div>
+            <h2 dangerouslySetInnerHTML={{ __html: process.headline || 'Od pierwszej rozmowy do działającego<br>systemu — w 4 krokach' }} />
           </div>
           <div className="process-steps">
             {[
@@ -167,8 +175,8 @@ export default async function Home() {
 
       <section className="cta-final" id="kontakt">
         <div className="section-label" style={{ color: 'var(--accent-bright)' }}>Gotowy?</div>
-        <h2>Zamów bezpłatne demo<br />i zacznij oszczędzać czas</h2>
-        <p>Oddzwonimy w ciągu 24 godzin. Bez zobowiązań, bez ukrytych kosztów.</p>
+        <h2 dangerouslySetInnerHTML={{ __html: cta.headline || 'Zamów bezpłatne demo<br>i zacznij oszczędzać czas' }} />
+        <p>{cta.subheading || 'Oddzwonimy w ciągu 24 godzin. Bez zobowiązań, bez ukrytych kosztów.'}</p>
         <div className="contact-form">
           <div className="form-grid">
             <div className="form-group"><label>Imię i nazwisko *</label><input type="text" placeholder="Jan Kowalski" /></div>
@@ -186,16 +194,16 @@ export default async function Home() {
         <div className="footer-top">
           <div className="footer-brand">
             <a href="#" className="footer-logo">
-            <img src="/favicon-96x96.png" alt="Automaly logo" width={28} height={28} />
-            Automaly.pl
+              <img src="/favicon-96x96.png" alt="Automaly logo" width={28} height={28} />
+              {footer.logo || 'Automaly.pl'}
             </a>
             <div className="footer-contact">
-              <a href="mailto:info@automaly.pl">info@automaly.pl</a>
-              <a href="tel:+48698724699">+48 698 724 699</a>
+              <a href={`mailto:${footer.email || 'info@automaly.pl'}`}>{footer.email || 'info@automaly.pl'}</a>
+              {footer.phone && <a href={`tel:${footer.phone}`}>{footer.phone}</a>}
             </div>
           </div>
         </div>
-        <div className="footer-bottom">© 2026 Automaly.pl</div>
+        <div className="footer-bottom">{footer.copyright || '© 2026 Automaly.pl'}</div>
       </footer>
     </>
   )
