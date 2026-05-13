@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 async function getContent() {
   const { data, error } = await supabase.from('content').select('section, key, value')
   console.log('Supabase data:', JSON.stringify(data))
