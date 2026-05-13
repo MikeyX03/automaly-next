@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-
+export const revalidate = 0
 async function getContent() {
   const { data } = await supabase.from('content').select('section, key, value')
   const content: Record<string, Record<string, string>> = {}
