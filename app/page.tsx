@@ -1,7 +1,9 @@
 import { supabase } from '@/lib/supabase'
 export const revalidate = 0
 async function getContent() {
-  const { data } = await supabase.from('content').select('section, key, value')
+  const { data, error } = await supabase.from('content').select('section, key, value')
+  console.log('Supabase data:', JSON.stringify(data))
+  console.log('Supabase error:', error)
   const content: Record<string, Record<string, string>> = {}
   data?.forEach(({ section, key, value }) => {
     if (!content[section]) content[section] = {}
