@@ -2,7 +2,11 @@
 import { useState } from 'react'
 import { supabase } from '@/lib/supabase'
 
+const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'automaly2026'
+
 export default function Admin() {
+  const [authed, setAuthed] = useState(false)
+  const [password, setPassword] = useState('')
   const [title, setTitle] = useState('')
   const [slug, setSlug] = useState('')
   const [excerpt, setExcerpt] = useState('')
@@ -11,12 +15,12 @@ export default function Admin() {
   const [status, setStatus] = useState('')
 
   const generateSlug = (title: string) =>
-  title.toLowerCase()
-    .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
-    .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
-    .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+    title.toLowerCase()
+      .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e')
+      .replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o')
+      .replace(/ś/g, 's').replace(/ź/g, 'z').replace(/ż/g, 'z')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
@@ -39,18 +43,6 @@ export default function Admin() {
     }
   }
 
-  const fieldStyle = {
-    display: 'flex' as const,
-    flexDirection: 'column' as const,
-    gap: '6px',
-  }
-
-  const labelStyle = {
-    fontSize: '13px',
-    fontWeight: 500,
-    color: '#666',
-  }
-
   const inputStyle = {
     padding: '12px 14px',
     borderRadius: '8px',
@@ -60,6 +52,31 @@ export default function Admin() {
     outline: 'none',
     width: '100%',
     color: '#1a1a1a',
+  }
+
+  const labelStyle = { fontSize: '13px', fontWeight: 500, color: '#666' }
+  const fieldStyle = { display: 'flex' as const, flexDirection: 'column' as const, gap: '6px' }
+
+  if (!authed) {
+    return (
+      <main style={{ maxWidth: '400px', margin: '0 auto', padding: '200px 5% 80px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: '28px', fontWeight: 800, color: '#341539', marginBottom: '32px' }}>Panel admina</h1>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          onKeyDown={e => e.key === 'Enter' && (password === ADMIN_PASSWORD ? setAuthed(true) : alert('Złe hasło'))}
+          placeholder="Hasło"
+          style={{ ...inputStyle, marginBottom: '16px' }}
+        />
+        <button
+          onClick={() => { if (password === ADMIN_PASSWORD) setAuthed(true); else alert('Złe hasło') }}
+          style={{ background: '#341539', color: '#fff', padding: '14px', borderRadius: '12px', border: 'none', fontSize: '16px', fontWeight: 700, cursor: 'pointer', width: '100%', fontFamily: 'Inter, sans-serif' }}
+        >
+          Zaloguj →
+        </button>
+      </main>
+    )
   }
 
   return (
