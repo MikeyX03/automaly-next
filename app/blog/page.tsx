@@ -4,6 +4,7 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 
 export default async function Blog() {
+  const navbar = content.navbar || {}
   const { data: posts } = await supabase
     .from('posts')
     .select('title, slug, excerpt, cover_image, created_at')
