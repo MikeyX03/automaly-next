@@ -4,14 +4,9 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 
 async function getContent() {
-  const { data } = await supabase.from('content').select('section, key, value')
-  const content: Record<string, Record<string, string>> = {}
-  data?.forEach(({ section, key, value }: { section: string; key: string; value: string }) => {
-    if (!content[section]) content[section] = {}
-    content[section][key] = value
-  })
-  return content
-}
+  const { data } = await supabase
+    .from('content')
+    .select('section, key, value')
 
 export default async function Blog() {
   const navbar = content.navbar || {}
