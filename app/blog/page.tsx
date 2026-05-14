@@ -8,8 +8,18 @@ async function getContent() {
     .from('content')
     .select('section, key, value')
 
+  const content: Record<string, Record<string, string>> = {}
+  data?.forEach(({ section, key, value }) => {
+    if (!content[section]) content[section] = {}
+    content[section][key] = value
+  })
+  return content
+}
+
 export default async function Blog() {
+  const content = await getContent()          // ← DODAJ TO
   const navbar = content.navbar || {}
+
   const { data: posts } = await supabase
     .from('posts')
     .select('title, slug, excerpt, cover_image, created_at')
@@ -24,10 +34,10 @@ export default async function Blog() {
           {navbar.logo || 'Automaly.pl'}
         </a>
         <ul className="nav-links">
-        <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
-        <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
-        <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
-        <li><a href="/blog">Blog</a></li>
+          <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
+          <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
+          <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
+          <li><a href="/blog">Blog</a></li>
         </ul>
         <a href="#kontakt" className="btn-nav">{navbar.cta || 'Darmowe demo →'}</a>
       </nav>
