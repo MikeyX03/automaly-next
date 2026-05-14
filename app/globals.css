@@ -539,3 +539,32 @@
     .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
     .footer-top { flex-direction: column; }
   }
+
+  .prose {
+  max-width: none;
+  color: #1a1a1a;
+  line-height: 1.85;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: #341539;
+  font-weight: 700;
+  margin-top: 2.2em;
+  margin-bottom: 1em;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.5em;
+  padding-left: 1.2em;
+}
+
+.prose img {
+  border-radius: 12px;
+  margin: 2em 0;
+}

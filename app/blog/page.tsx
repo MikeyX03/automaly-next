@@ -3,7 +3,23 @@ import Link from 'next/link'
 
 export const dynamic = 'force-dynamic'
 
+async function getContent() {
+  const { data } = await supabase
+    .from('content')
+    .select('section, key, value')
+
+  const content: Record<string, Record<string, string>> = {}
+  data?.forEach(({ section, key, value }) => {
+    if (!content[section]) content[section] = {}
+    content[section][key] = value
+  })
+  return content
+}
+
 export default async function Blog() {
+  const content = await getContent()          // ← DODAJ TO
+  const navbar = content.navbar || {}
+
   const { data: posts } = await supabase
     .from('posts')
     .select('title, slug, excerpt, cover_image, created_at')
@@ -12,6 +28,24 @@ export default async function Blog() {
 
   return (
     <>
+      <nav>
+  <a href="/" className="logo">   {/* ← zmienione z "#" na "/" */}
+    <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
+    {navbar.logo || 'Automaly.pl'}
+  </a>
+
+  <ul className="nav-links">
+    <li><a href="/#uslugi">{navbar.link1 || 'Usługi'}</a></li>
+    <li><a href="/#proces">{navbar.link2 || 'Jak działamy'}</a></li>
+    <li><a href="/#faq">{navbar.link3 || 'FAQ'}</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
+
+  <a href="/#kontakt" className="btn-nav">
+    {navbar.cta || 'Darmowe demo →'}
+  </a>
+</nav>
+      
       <div style={{ borderBottom: '1px solid rgba(52,21,57,0.1)', padding: '0 5%', marginTop: '64px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 0 32px' }}>
           <h1 style={{ fontSize: '42px', fontWeight: 800, color: '#341539', letterSpacing: '-1px' }}>Blog</h1>
