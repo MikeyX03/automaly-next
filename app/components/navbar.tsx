@@ -31,8 +31,6 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
           className="hamburger"
           type="button"
           aria-label="Menu"
-          style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
-          onTouchEnd={(e) => { e.preventDefault(); setOpen(!open) }}
           onClick={() => setOpen(!open)}
         >
           {open ? '✕' : '☰'}
