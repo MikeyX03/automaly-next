@@ -612,3 +612,17 @@
   color: #c084d0;
   text-decoration: underline;
 }
+
+.btn-blog-mobile {
+  display: none;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .btn-blog-mobile {
+    display: inline-block;
+  }
+}
