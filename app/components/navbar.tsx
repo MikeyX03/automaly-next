@@ -14,8 +14,8 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
   const [open, setOpen] = useState(false)
 
   return (
-    <>
-      <nav>
+    <nav style={{ height: open ? 'auto' : '64px', flexWrap: 'wrap', alignItems: 'flex-start', paddingTop: open ? '0' : undefined }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', height: '64px' }}>
         <a href="/" className="logo">
           <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
           {logo || 'Automaly.pl'}
@@ -35,19 +35,24 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
         >
           {open ? '✕' : '☰'}
         </button>
-      </nav>
+      </div>
 
       {open && (
-        <div className="mobile-menu">
-          <a href="/#uslugi" onClick={() => setOpen(false)}>{link1 || 'Usługi'}</a>
-          <a href="/#proces" onClick={() => setOpen(false)}>{link2 || 'Jak działamy'}</a>
-          <a href="/#faq" onClick={() => setOpen(false)}>{link3 || 'FAQ'}</a>
-          <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
-          <a href="/#kontakt" className="btn-nav" onClick={() => setOpen(false)}>
-            {cta || 'Darmowe demo →'}
-          </a>
+        <div style={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          padding: '16px 0 24px',
+          borderTop: '1px solid rgba(52,21,57,0.12)'
+        }}>
+          <a href="/#uslugi" style={{ color: '#666', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }} onClick={() => setOpen(false)}>{link1 || 'Usługi'}</a>
+          <a href="/#proces" style={{ color: '#666', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }} onClick={() => setOpen(false)}>{link2 || 'Jak działamy'}</a>
+          <a href="/#faq" style={{ color: '#666', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }} onClick={() => setOpen(false)}>{link3 || 'FAQ'}</a>
+          <a href="/blog" style={{ color: '#666', textDecoration: 'none', fontSize: '16px', fontWeight: 500 }} onClick={() => setOpen(false)}>Blog</a>
+          <a href="/#kontakt" className="btn-nav" style={{ textAlign: 'center' }} onClick={() => setOpen(false)}>{cta || 'Darmowe demo →'}</a>
         </div>
       )}
-    </>
+    </nav>
   )
 }
