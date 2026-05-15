@@ -20,8 +20,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   // Opcjonalnie: czyszczenie backticków jeśli się pojawiają
   const cleanContent = post.content
-    .replace(/^```markdown?\n/, '')
-    .replace(/\n```$/, '')
+    .replace(/```[\w]*\n?/g, '')
     .trim()
 
   return (
@@ -83,7 +82,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
           />
         )}
 
-        <div className="prose prose-lg">
+        <div className="prose">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {cleanContent}
           </ReactMarkdown>

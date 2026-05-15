@@ -568,3 +568,27 @@
   border-radius: 12px;
   margin: 2em 0;
 }
+
+.prose h2 {
+  font-size: 26px;
+  letter-spacing: -0.5px;
+}
+
+.prose h3 {
+  font-size: 20px;
+}
+
+.prose li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.prose a {
+  color: #c084d0;
+  text-decoration: underline;
+}
