@@ -613,16 +613,46 @@
   text-decoration: underline;
 }
 
-.btn-blog-mobile {
+.hamburger {
   display: none;
+  background: none;
+  border: none;
+  font-size: 22px;
   color: var(--primary);
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 @media (max-width: 600px) {
-  .btn-blog-mobile {
+  .hamburger { display: block; }
+  .btn-nav { display: none; }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 5%;
+    gap: 20px;
+    z-index: 99;
+  }
+
+  .mobile-menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .mobile-menu .btn-nav {
     display: inline-block;
+    text-align: center;
+    margin-top: 8px;
   }
 }
