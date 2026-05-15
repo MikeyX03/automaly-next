@@ -35,6 +35,7 @@ export default async function Home() {
         <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
         <li><a href="/blog">Blog</a></li>
         </ul>
+        <a href="/blog" className="btn-blog-mobile">Blog</a>
         <a href="#kontakt" className="btn-nav">{navbar.cta || 'Darmowe demo →'}</a>
       </nav>
 
