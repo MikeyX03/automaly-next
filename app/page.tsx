@@ -30,13 +30,13 @@ export default async function Home() {
           {navbar.logo || 'Automaly.pl'}
         </a>
         <ul className="nav-links">
-        <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
-        <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
-        <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
-        <li><a href="/blog">Blog</a></li>
+          <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
+          <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
+          <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
+          <li><a href="/blog">Blog</a></li>
         </ul>
-        <a href="/blog" className="btn-blog-mobile">Blog</a>
         <a href="#kontakt" className="btn-nav">{navbar.cta || 'Darmowe demo →'}</a>
+        <button className="hamburger" onclick="this.closest('nav').classList.toggle('open')">☰</button>
       </nav>
 
       <section style={{ paddingTop: '64px' }}>
