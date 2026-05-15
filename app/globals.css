@@ -588,6 +588,26 @@
   color: #1a1a1a;
 }
 
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
 .prose a {
   color: #c084d0;
   text-decoration: underline;
