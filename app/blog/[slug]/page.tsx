@@ -18,12 +18,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   // Czyszczenie Markdown (usuwa ``` na początku i końcu)
   const cleanContent = post.content
-<<<<<<< HEAD
     .replace(/```[\w]*\n?/g, '')
-=======
-    .replace(/^```[\s\S]*?\n/, '')   // usuwa blok code na początku
-    .replace(/\n```$/, '')           // usuwa blok code na końcu
->>>>>>> 749ed9aa9d71b7e6e2bd0c0b780d3497f3e0cc49
     .trim()
 
   return (
@@ -99,25 +94,12 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             }} 
           />
         )}
-
-<<<<<<< HEAD
+        
         <div className="prose">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {cleanContent}
           </ReactMarkdown>
         </div>
-=======
-        {/* Poprawione renderowanie treści */}
-        <div 
-          style={{ 
-            fontSize: '18px', 
-            lineHeight: 1.85, 
-            color: '#1a1a1a', 
-            fontWeight: 300 
-          }}
-          dangerouslySetInnerHTML={{ __html: cleanContent }} 
-        />
->>>>>>> 749ed9aa9d71b7e6e2bd0c0b780d3497f3e0cc49
       </div>
     </>
   )
