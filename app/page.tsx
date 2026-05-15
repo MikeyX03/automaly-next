@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabase'
-import Navbar from './components/Navbar'
+import Navbar from './components/navbar'
 export const dynamic = 'force-dynamic'
 
 async function getContent() {
@@ -25,7 +25,7 @@ export default async function Home() {
 
   return (
     <>
-      <navbar
+      <Navbar
         logo={navbar.logo}
         link1={navbar.link1}
         link2={navbar.link2}
