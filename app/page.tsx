@@ -1,4 +1,5 @@
 import { supabase } from '@/lib/supabase'
+import Navbar from './components/Navbar'
 export const dynamic = 'force-dynamic'
 
 async function getContent() {
@@ -24,20 +25,13 @@ export default async function Home() {
 
   return (
     <>
-      <nav>
-        <a href="#" className="logo">
-          <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
-          {navbar.logo || 'Automaly.pl'}
-        </a>
-        <ul className="nav-links">
-          <li><a href="#uslugi">{navbar.link1 || 'Usługi'}</a></li>
-          <li><a href="#proces">{navbar.link2 || 'Jak działamy'}</a></li>
-          <li><a href="#faq">{navbar.link3 || 'FAQ'}</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-        <a href="#kontakt" className="btn-nav">{navbar.cta || 'Darmowe demo →'}</a>
-        <button className="hamburger" onclick="this.closest('nav').classList.toggle('open')">☰</button>
-      </nav>
+      <navbar
+        logo={navbar.logo}
+        link1={navbar.link1}
+        link2={navbar.link2}
+        link3={navbar.link3}
+        cta={navbar.cta}
+      />
 
       <section style={{ paddingTop: '64px' }}>
         <div className="hero">
