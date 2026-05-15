@@ -1,23 +1,10 @@
-'use client'
-
-import { useState } from 'react'
-
-interface NavbarProps {
+export default function Navbar({ logo, link1, link2, link3, cta }: {
   logo?: string
   link1?: string
   link2?: string
   link3?: string
   cta?: string
-}
-
-export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) {
-  const [open, setOpen] = useState(false)
-
-  const toggle = () => {
-    console.log('toggle clicked, open:', open)
-    setOpen(prev => !prev)
-  }
-
+}) {
   return (
     <>
       <nav>
@@ -31,29 +18,19 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
           <li><a href="/#faq">{link3 || 'FAQ'}</a></li>
           <li><a href="/blog">Blog</a></li>
         </ul>
+        <input type="checkbox" id="nav-toggle" className="nav-toggle-input" />
+        <label htmlFor="nav-toggle" className="hamburger">☰</label>
         <a href="/#kontakt" className="btn-nav">{cta || 'Darmowe demo →'}</a>
-        <div
-          className="hamburger"
-          role="button"
-          tabIndex={0}
-          onClick={toggle}
-          onKeyDown={(e) => e.key === 'Enter' && toggle()}
-        >
-          {open ? '✕' : '☰'}
-        </div>
-      </nav>
-
-      {open && (
         <div className="mobile-menu">
-          <a href="/#uslugi" onClick={() => setOpen(false)}>{link1 || 'Usługi'}</a>
-          <a href="/#proces" onClick={() => setOpen(false)}>{link2 || 'Jak działamy'}</a>
-          <a href="/#faq" onClick={() => setOpen(false)}>{link3 || 'FAQ'}</a>
-          <a href="/blog" onClick={() => setOpen(false)}>Blog</a>
-          <a href="/#kontakt" className="btn-nav" style={{ textAlign: 'center' }} onClick={() => setOpen(false)}>
+          <a href="/#uslugi">{link1 || 'Usługi'}</a>
+          <a href="/#proces">{link2 || 'Jak działamy'}</a>
+          <a href="/#faq">{link3 || 'FAQ'}</a>
+          <a href="/blog">Blog</a>
+          <a href="/#kontakt" className="btn-nav">
             {cta || 'Darmowe demo →'}
           </a>
         </div>
-      )}
+      </nav>
     </>
   )
 }
