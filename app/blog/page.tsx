@@ -17,7 +17,7 @@ async function getContent() {
 }
 
 export default async function Blog() {
-  const content = await getContent()          // ← DODAJ TO
+  const content = await getContent()
   const navbar = content.navbar || {}
 
   const { data: posts } = await supabase
@@ -29,23 +29,21 @@ export default async function Blog() {
   return (
     <>
       <nav>
-  <a href="/" className="logo">   {/* ← zmienione z "#" na "/" */}
-    <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
-    {navbar.logo || 'Automaly.pl'}
-  </a>
+        <a href="/" className="logo">
+          <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
+          {navbar.logo || 'Automaly.pl'}
+        </a>
+        <ul className="nav-links">
+          <li><a href="/#uslugi">{navbar.link1 || 'Usługi'}</a></li>
+          <li><a href="/#proces">{navbar.link2 || 'Jak działamy'}</a></li>
+          <li><a href="/#faq">{navbar.link3 || 'FAQ'}</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <a href="/#kontakt" className="btn-nav">
+          {navbar.cta || 'Darmowe demo →'}
+        </a>
+      </nav>
 
-  <ul className="nav-links">
-    <li><a href="/#uslugi">{navbar.link1 || 'Usługi'}</a></li>
-    <li><a href="/#proces">{navbar.link2 || 'Jak działamy'}</a></li>
-    <li><a href="/#faq">{navbar.link3 || 'FAQ'}</a></li>
-    <li><a href="/blog">Blog</a></li>
-  </ul>
-
-  <a href="/#kontakt" className="btn-nav">
-    {navbar.cta || 'Darmowe demo →'}
-  </a>
-</nav>
-      
       <div style={{ borderBottom: '1px solid rgba(52,21,57,0.1)', padding: '0 5%', marginTop: '64px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 0 32px' }}>
           <h1 style={{ fontSize: '42px', fontWeight: 800, color: '#341539', letterSpacing: '-1px' }}>Blog</h1>
@@ -55,16 +53,15 @@ export default async function Blog() {
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '64px 5% 100px' }}>
         {posts && posts.length > 0 ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px' }}>
-            {posts.map((post, i) => (
+          <div className="blog-grid">
+            {posts.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <article style={{ cursor: 'pointer' }}>
-                  {post.cover_image && (
-                    <div style={{ width: '100%', height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '20px', background: '#f3e8f7' }}>
-                      <img src={post.cover_image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }} />
+                  {post.cover_image ? (
+                    <div style={{ width: '100%', height: '200px', borderRadius: '12px', overflow: 'hidden', marginBottom: '20px' }}>
+                      <img src={post.cover_image} alt={post.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                  )}
-                  {!post.cover_image && (
+                  ) : (
                     <div style={{ width: '100%', height: '200px', borderRadius: '12px', marginBottom: '20px', background: 'linear-gradient(135deg, #341539, #4e1f55)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                       <span style={{ fontSize: '40px' }}>✦</span>
                     </div>
@@ -72,9 +69,13 @@ export default async function Blog() {
                   <p style={{ fontSize: '12px', color: '#c084d0', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '8px' }}>
                     {new Date(post.created_at).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </p>
-                  <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#341539', marginBottom: '10px', lineHeight: 1.3 }}>{post.title}</h2>
-                  <p style={{ fontSize: '15px', color: '#666', lineHeight: 1.6 }}>{post.excerpt}</p>
-                  <div style={{ marginTop: '16px', fontSize: '14px', fontWeight: 600, color: '#341539', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <h2 style={{ fontSize: '20px', fontWeight: 700, color: '#341539', marginBottom: '10px', lineHeight: 1.3 }}>
+                    {post.title}
+                  </h2>
+                  <p style={{ fontSize: '15px', color: '#666', lineHeight: 1.6 }}>
+                    {post.excerpt}
+                  </p>
+                  <div style={{ marginTop: '16px', fontSize: '14px', fontWeight: 600, color: '#341539' }}>
                     Czytaj dalej →
                   </div>
                 </article>
