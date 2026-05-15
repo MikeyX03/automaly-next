@@ -1,6 +1,7 @@
 import { supabase } from '@/lib/supabase'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Navbar from '../../components/navbar'
 
 export const dynamic = 'force-dynamic'
 
@@ -23,19 +24,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <nav>
-        <a href="/" className="logo">
-          <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
-          Automaly.pl
-        </a>
-        <ul className="nav-links">
-          <li><a href="/#uslugi">Usługi</a></li>
-          <li><a href="/#proces">Jak działamy</a></li>
-          <li><a href="/#faq">FAQ</a></li>
-          <li><a href="/blog">Blog</a></li>
-        </ul>
-        <a href="/#kontakt" className="btn-nav">Darmowe demo →</a>
-      </nav>
+      <Navbar />
 
       <div style={{ maxWidth: '720px', margin: '0 auto', padding: '100px 24px 120px' }}>
         <Link
