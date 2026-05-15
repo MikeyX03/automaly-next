@@ -28,12 +28,12 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
         </ul>
         <a href="/#kontakt" className="btn-nav">{cta || 'Darmowe demo →'}</a>
         <button
-          className="hamburger"
-          type="button"
-          aria-label="Menu"
-          onClick={() => setOpen(!open)}
+            className="hamburger"
+            type="button"
+            aria-label="Menu"
+            onClick={() => alert('klik')}
         >
-          {open ? '✕' : '☰'}
+          ☰
         </button>
       </div>
 
