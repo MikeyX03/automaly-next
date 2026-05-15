@@ -624,7 +624,16 @@
 }
 
 .mobile-menu {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 64px; left: 0; right: 0;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 20px 5%;
+  gap: 20px;
+  z-index: 999;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media (max-width: 600px) {
