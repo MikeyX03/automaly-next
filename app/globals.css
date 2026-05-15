@@ -620,7 +620,11 @@
   font-size: 22px;
   color: var(--primary);
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 16px;
+  position: relative;
+  z-index: 200;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+  touch-action: manipulation;
 }
 
 .mobile-menu {
