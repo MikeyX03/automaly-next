@@ -27,11 +27,13 @@ export default function Navbar({ logo, link1, link2, link3, cta }: NavbarProps) 
           <li><a href="/blog">Blog</a></li>
         </ul>
         <a href="/#kontakt" className="btn-nav">{cta || 'Darmowe demo →'}</a>
-        <button 
-          className="hamburger" 
-          onClick={() => setOpen(!open)}
+        <button
+          className="hamburger"
           type="button"
           aria-label="Menu"
+          style={{ touchAction: 'manipulation', WebkitTapHighlightColor: 'transparent' }}
+          onTouchEnd={(e) => { e.preventDefault(); setOpen(!open) }}
+          onClick={() => setOpen(!open)}
         >
           {open ? '✕' : '☰'}
         </button>
