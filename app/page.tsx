@@ -1,6 +1,7 @@
 import { supabase } from '@/lib/supabase'
 import Navbar from './components/navbar'
 export const dynamic = 'force-dynamic'
+import ContactForm from './components/ContactForm'
 
 async function getContent() {
   const { data } = await supabase.from('content').select('section, key, value')
@@ -173,17 +174,7 @@ export default async function Home() {
         <div className="section-label" style={{ color: 'var(--accent-bright)' }}>Gotowy?</div>
         <h2 dangerouslySetInnerHTML={{ __html: cta.headline || 'Zamów bezpłatne demo<br>i zacznij oszczędzać czas' }} />
         <p>{cta.subheading || 'Oddzwonimy w ciągu 24 godzin. Bez zobowiązań, bez ukrytych kosztów.'}</p>
-        <div className="contact-form">
-          <div className="form-grid">
-            <div className="form-group"><label>Imię i nazwisko *</label><input type="text" placeholder="Jan Kowalski" /></div>
-            <div className="form-group"><label>Telefon *</label><input type="tel" placeholder="+48 600 000 000" /></div>
-            <div className="form-group full"><label>E-mail *</label><input type="email" placeholder="jan@firma.pl" /></div>
-            <div className="form-group full"><label>Nazwa firmy</label><input type="text" placeholder="Firma Sp. z o.o." /></div>
-            <div className="form-group full"><label>Co chcesz zautomatyzować?</label><textarea placeholder="Np. obsługa zapytań klientów..."></textarea></div>
-          </div>
-          <button className="btn-submit">Zamów bezpłatne demo →</button>
-          <div className="form-note">Odpiszemy w ciągu 24h · Bez umów · Bez karty kredytowej</div>
-        </div>
+        <ContactForm />
       </section>
 
       <footer>
