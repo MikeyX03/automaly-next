@@ -70,11 +70,11 @@ nav {
 }
 .btn-nav:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-/* HAMBURGER — checkbox hack, działa na każdym iOS */
-.nav-toggle-input { display: none; }
-
+/* HAMBURGER */
 .hamburger {
   display: none;
+  background: none;
+  border: none;
   font-size: 24px;
   color: var(--primary);
   cursor: pointer;
@@ -82,17 +82,44 @@ nav {
   z-index: 200;
   user-select: none;
   -webkit-user-select: none;
+  line-height: 1;
 }
 
-.mobile-menu { display: none; }
+.hamburger.open { color: var(--primary-dark); }
+
+/* BACKDROP */
+.nav-backdrop {
+  display: none;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none;
+}
 
 @media (max-width: 600px) {
   .nav-links { display: none; }
   .btn-nav { display: none; }
   .hamburger { display: block; }
 
-  .nav-toggle-input:checked + .hamburger { color: var(--primary-light); }
+  /* Backdrop */
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 98;
+    animation: fadeIn 0.2s ease;
+  }
 
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Mobile menu — ukryte domyślnie */
   .mobile-menu {
     display: none;
     position: fixed;
@@ -103,10 +130,16 @@ nav {
     flex-direction: column;
     gap: 20px;
     z-index: 99;
+    animation: slideDown 0.2s ease;
   }
 
-  .nav-toggle-input:checked ~ .mobile-menu {
+  .mobile-menu--open {
     display: flex;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .mobile-menu a {
