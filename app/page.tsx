@@ -36,20 +36,18 @@ export default async function Home() {
 
       <section style={{ paddingTop: '64px' }}>
         <div className="hero">
-          <div>
-            <div className="hero-eyebrow">
-              <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony www'}
-            </div>
-            <h1 dangerouslySetInnerHTML={{ __html: hero.headline || 'Przestań robić rzeczy, które zrobi za Ciebie <em>AI</em>' }} />
-            <p className="hero-sub">{hero.subheading || 'Budujemy automatyzacje, strony internetowe i wdrażamy AI dla małych i średnich firm w Polsce.'}</p>
-            <div className="hero-cta">
-              <a href="#kontakt" className="btn-primary">{hero.cta_primary || 'Zamów bezpłatne demo →'}</a>
-              <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
-            </div>
-            <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
+          <div className="hero-eyebrow">
+            <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony www'}
           </div>
-        </div>
-      </section>
+          <h1 dangerouslySetInnerHTML={{ __html: hero.headline || 'Przestań robić rzeczy, które zrobi za Ciebie <em>AI</em>' }} />
+          <p className="hero-sub">{hero.subheading || 'Budujemy automatyzacje, strony internetowe i wdrażamy AI dla małych i średnich firm w Polsce.'}</p>
+          <div className="hero-cta">
+            <a href="#kontakt" className="btn-primary">{hero.cta_primary || 'Zamów bezpłatne demo →'}</a>
+            <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
+          </div>
+        <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
+      </div>
+</section>
 
       <section className="problem" id="problem">
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>
