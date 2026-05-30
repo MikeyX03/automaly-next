@@ -48,18 +48,6 @@ export default async function Home() {
             </div>
             <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
           </div>
-          <div className="hero-visual">
-            <div className="hero-demo-label">Przykład — automatyzacja sprzedaży</div>
-            <div className="demo-process">
-              <div className="demo-step"><div className="demo-step-icon">📥</div><div className="demo-step-text">Klient wypełnia formularz na stronie</div></div>
-              <div className="demo-arrow">↓</div>
-              <div className="demo-step"><div className="demo-step-icon">🤖</div><div className="demo-step-text">AI kwalifikuje zapytanie i wysyła spersonalizowaną ofertę</div></div>
-              <div className="demo-arrow">↓</div>
-              <div className="demo-step"><div className="demo-step-icon">📅</div><div className="demo-step-text">System automatycznie umawia spotkanie</div></div>
-              <div className="demo-arrow">↓</div>
-              <div className="demo-step"><div className="demo-step-icon">✅</div><div className="demo-step-text">Ty nic nie robisz — system pracuje za Ciebie 24/7</div></div>
-            </div>
-          </div>
         </div>
       </section>
 
