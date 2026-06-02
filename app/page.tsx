@@ -164,24 +164,27 @@ export default async function Home() {
       </section>
 
       <footer>
-        <div className="footer-top">
-          <div className="footer-brand">
-            <a href="#" className="footer-logo">
-              <img src="/favicon-96x96.png" alt="Automaly logo" width={28} height={28} />
-              {footer.logo || 'Automaly.pl'}
-            </a>
-            <div className="footer-contact">
-              <a href={`mailto:${footer.email || 'info@automaly.pl'}`}>{footer.email || 'info@automaly.pl'}</a>
-              {footer.phone && <a href={`tel:${footer.phone}`}>{footer.phone}</a>}
-            </div>
-          </div>
-        </div>
-        <div className="footer-legal">
-          <a href="/privacy-policy">Polityka Prywatności</a>
-          <a href="/regulamin">Regulamin</a>
-        </div>
-        <div className="footer-bottom">{footer.copyright || '© 2026 Automaly.pl'}</div>
-      </footer>
+  <div className="footer-top">
+    <div className="footer-brand">
+      <a href="#" className="footer-logo">
+        <img src="/favicon-96x96.png" alt="Automaly logo" width={28} height={28} />
+        {footer.logo || 'Automaly.pl'}
+      </a>
+      <div className="footer-contact">
+        <a href={`mailto:${footer.email || 'info@automaly.pl'}`}>{footer.email || 'info@automaly.pl'}</a>
+        {footer.phone && <a href={`tel:${footer.phone}`}>{footer.phone}</a>}
+      </div>
+    </div>
+  </div>
+
+  <div className="footer-bottom">
+    <span>{footer.copyright || '© 2026 Automaly.pl'}</span>
+    <div className="footer-legal">
+      <a href="/polityka-prywatnosci">Polityka Prywatności</a>
+      <a href="/regulamin">Regulamin</a>
+    </div>
+  </div>
+</footer>
     </>
   )
 }
