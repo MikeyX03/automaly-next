@@ -180,7 +180,7 @@ export default async function Home() {
   <div className="footer-bottom">
     <span>{footer.copyright || '© 2026 Automaly.pl'}</span>
     <div className="footer-legal">
-      <a href="/polityka-prywatnosci">Polityka Prywatności</a>
+      <a href="/privacy-policy">Polityka Prywatności</a>
       <a href="/regulamin">Regulamin</a>
     </div>
   </div>
