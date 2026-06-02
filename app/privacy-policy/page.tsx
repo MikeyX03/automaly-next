@@ -16,7 +16,7 @@ const sections = [
       <>
         <p>
           Administratorem Twoich danych osobowych jest{" "}
-          <strong>Mikolaj [TWOJE NAZWISKO], prowadzący działalność pod nazwą
+          <strong>Mikolaj Cieślik, prowadzący działalność nierejestrowaną pod nazwą
           Automaly.pl</strong>, z siedzibą w Polsce.
         </p>
         <p className="mt-3">
