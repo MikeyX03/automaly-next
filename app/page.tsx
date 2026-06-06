@@ -185,7 +185,7 @@ export default async function Home() {
  
           <div className="footer-social">
             <a
-              href="https://www.linkedin.com/company/automaly"
+              href="https://www.linkedin.com/company/113093390/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -207,7 +207,7 @@ export default async function Home() {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/automaly.pl"
+              href="https://www.instagram.com/automaly.pl/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
