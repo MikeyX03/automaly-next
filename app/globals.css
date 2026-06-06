@@ -680,6 +680,39 @@ footer {
   .legal-container { padding: 0 20px; }
 }
 
+.legal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.legal-footer-copy {
+  font-size: 13px;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.legal-footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.legal-footer-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.legal-footer-links a:hover {
+  color: var(--primary);
+}
+
 /* BLOG GRID */
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
