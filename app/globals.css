@@ -30,6 +30,41 @@ body {
 
 h1,h2,h3,h4 { font-family: 'Inter', sans-serif; line-height: 1.15; }
 
+/* === GŁÓWNY NAVBAR === */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* === STOPKA (nawigacja prawna) === */
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 13px;
+}
+
+.footer-nav a {
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-nav a:hover {
+  color: rgba(255,255,255,0.55);
+}
+
 /* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
