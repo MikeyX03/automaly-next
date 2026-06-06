@@ -1,5 +1,4 @@
 'use client'
-
 import { useState } from 'react'
 
 export default function Navbar({ logo, link1, link2, link3, cta }: {
@@ -10,22 +9,23 @@ export default function Navbar({ logo, link1, link2, link3, cta }: {
   cta?: string
 }) {
   const [open, setOpen] = useState(false)
-
   const close = () => setOpen(false)
 
   return (
     <>
-      <nav>
+      <nav className="site-nav">
         <a href="/" className="logo">
           <img src="/favicon-96x96.png" alt="Automaly logo" width={32} height={32} />
           {logo || 'Automaly.pl'}
         </a>
+
         <ul className="nav-links">
           <li><a href="/#uslugi">{link1 || 'Usługi'}</a></li>
           <li><a href="/#proces">{link2 || 'Jak działamy'}</a></li>
           <li><a href="/#faq">{link3 || 'FAQ'}</a></li>
           <li><a href="/blog">Blog</a></li>
         </ul>
+
         <button
           className={`hamburger${open ? ' open' : ''}`}
           onClick={() => setOpen(o => !o)}
@@ -34,6 +34,7 @@ export default function Navbar({ logo, link1, link2, link3, cta }: {
         >
           {open ? '✕' : '☰'}
         </button>
+
         <a href="/#kontakt" className="btn-nav">{cta || 'Darmowe demo →'}</a>
       </nav>
 
