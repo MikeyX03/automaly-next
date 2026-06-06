@@ -1,7 +1,10 @@
 import { supabase } from '@/lib/supabase'
 import Navbar from './components/navbar'
-export const dynamic = 'force-dynamic'
 import ContactForm from './components/ContactForm'
+import Link from 'next/link'
+import Image from 'next/image'
+
+export const dynamic = 'force-dynamic'
 
 async function getContent() {
   const { data } = await supabase.from('content').select('section, key, value')
@@ -37,7 +40,7 @@ export default async function Home() {
       <section style={{ paddingTop: '64px' }}>
         <div className="hero">
           <div className="hero-eyebrow">
-            <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony www'}
+            <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony internetowe'}
           </div>
           <h1 dangerouslySetInnerHTML={{ __html: hero.headline || 'Przestań robić rzeczy, które zrobi za Ciebie <em>AI</em>' }} />
           <p className="hero-sub">{hero.subheading || 'Budujemy automatyzacje, strony internetowe i wdrażamy AI dla małych i średnich firm w Polsce.'}</p>
@@ -45,14 +48,14 @@ export default async function Home() {
             <a href="#kontakt" className="btn-primary">{hero.cta_primary || 'Zamów bezpłatne demo →'}</a>
             <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
           </div>
-        <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
-      </div>
-</section>
+          <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
+        </div>
+      </section>
 
       <section className="problem" id="problem">
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>
           <div className="section-label">{problem.eyebrow || 'Czy to brzmi znajomo?'}</div>
-          <h2 dangerouslySetInnerHTML={{ __html: problem.headline || 'Tracisz godziny na rzeczy,<br>które robi za Ciebie automat' }} />
+          <h2 dangerouslySetInnerHTML={{ __html: problem.headline || 'Tracisz godziny na rzeczy, które robi za Ciebie automat' }} />
         </div>
         <div className="problem-grid">
           <div>
@@ -82,9 +85,21 @@ export default async function Home() {
         <h2 className="offer-headline" dangerouslySetInnerHTML={{ __html: offer.headline || 'Zanim zapłacisz choć złotówkę — zobaczysz działające rozwiązanie dla Twojej firmy' }} />
         <p className="offer-sub">{offer.subheading || 'Nie sprzedajemy obietnic. Pokazujemy konkretne demo dopasowane do Twoich procesów.'}</p>
         <div className="offer-steps">
-          <div className="offer-step"><div className="offer-step-num">1</div><div className="offer-step-title">Bezpłatna rozmowa</div><div className="offer-step-desc">30 minut. Opowiesz nam jak wygląda Twój dzień.</div></div>
-          <div className="offer-step"><div className="offer-step-num">2</div><div className="offer-step-title">Gotowe demo</div><div className="offer-step-desc">Budujemy działający prototyp. Bezpłatnie.</div></div>
-          <div className="offer-step"><div className="offer-step-num">3</div><div className="offer-step-title">Decydujesz</div><div className="offer-step-desc">Jeśli widzisz wartość — wdrażamy. Jeśli nie — rozchodzimy się.</div></div>
+          <div className="offer-step">
+            <div className="offer-step-num">1</div>
+            <div className="offer-step-title">Bezpłatna rozmowa</div>
+            <div className="offer-step-desc">30 minut. Opowiesz nam jak wygląda Twój dzień.</div>
+          </div>
+          <div className="offer-step">
+            <div className="offer-step-num">2</div>
+            <div className="offer-step-title">Gotowe demo</div>
+            <div className="offer-step-desc">Budujemy działający prototyp. Bezpłatnie.</div>
+          </div>
+          <div className="offer-step">
+            <div className="offer-step-num">3</div>
+            <div className="offer-step-title">Decydujesz</div>
+            <div className="offer-step-desc">Jeśli widzisz wartość — wdrażamy. Jeśli nie — rozchodzimy się.</div>
+          </div>
         </div>
         <a href="#kontakt" className="btn-primary" style={{ fontSize: '17px', padding: '18px 40px' }}>Zamów bezpłatne demo →</a>
         <div className="offer-cta-note">Odpiszemy w ciągu 24h · Bez umów · Bez karty kredytowej</div>
@@ -93,7 +108,7 @@ export default async function Home() {
       <section className="services" id="uslugi">
         <div className="services-header">
           <div className="section-label">{services.eyebrow || 'Czym się zajmujemy'}</div>
-          <h2 dangerouslySetInnerHTML={{ __html: services.headline || 'Wszystko, czego Twoja firma<br>potrzebuje, żeby działać sprawniej' }} />
+          <h2 dangerouslySetInnerHTML={{ __html: services.headline || 'Wszystko, czego Twoja firma potrzebuje, żeby działać sprawniej' }} />
         </div>
         <div className="services-grid">
           {[
@@ -117,7 +132,7 @@ export default async function Home() {
         <div className="process-inner">
           <div className="process-header">
             <div className="section-label">{process.eyebrow || 'Jak działamy'}</div>
-            <h2 dangerouslySetInnerHTML={{ __html: process.headline || 'Od pierwszej rozmowy do działającego<br>systemu — w 4 krokach' }} />
+            <h2 dangerouslySetInnerHTML={{ __html: process.headline || 'Od pierwszej rozmowy do działającego systemu — w 4 krokach' }} />
           </div>
           <div className="process-steps">
             {[
@@ -158,243 +173,57 @@ export default async function Home() {
 
       <section className="cta-final" id="kontakt">
         <div className="section-label" style={{ color: 'var(--accent-bright)' }}>Gotowy?</div>
-        <h2 dangerouslySetInnerHTML={{ __html: cta.headline || 'Zamów bezpłatne demo<br>i zacznij oszczędzać czas' }} />
+        <h2 dangerouslySetInnerHTML={{ __html: cta.headline || 'Zamów bezpłatne demo i zacznij oszczędzać czas' }} />
         <p>{cta.subheading || 'Oddzwonimy w ciągu 24 godzin. Bez zobowiązań, bez ukrytych kosztów.'}</p>
         <ContactForm />
       </section>
 
-      <footer className="footer">
-      <div className="footer-inner">
-        {/* Top row: logo+contact | social icons */}
-        <div className="footer-top">
-          <div className="footer-brand">
-            <Link href="/" className="footer-logo">
-              <Image
-                src="/favicon-96x96.png"
-                alt="Automaly logo"
-                width={24}
-                height={24}
-              />
-              <span>Automaly.pl</span>
-            </Link>
-            <div className="footer-contact">
-              <a href="mailto:info@automaly.pl">info@automaly.pl</a>
-              <a href="tel:+48698724699">+48 698 724 699</a>
+      <footer>
+        <div className="footer-inner">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <Link href="/" className="footer-logo">
+                <Image src="/favicon-96x96.png" alt="Automaly logo" width={28} height={28} />
+                Automaly.pl
+              </Link>
+              <div className="footer-contact">
+                <a href="mailto:info@automaly.pl">info@automaly.pl</a>
+                <a href="tel:+48698724699">+48 698 724 699</a>
+              </div>
+            </div>
+
+            <div className="footer-social">
+              <a href="https://www.linkedin.com/company/113093390/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/automaly.pl/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="social-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@automaly.pl" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="social-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
             </div>
           </div>
- 
-          <div className="footer-social">
-            <a
-              href="https://www.linkedin.com/company/113093390/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="social-link"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a
-              href="https://www.instagram.com/automaly.pl/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="social-link"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-            <a
-              href="https://www.tiktok.com/@automaly.pl"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok"
-              className="social-link"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-              </svg>
-            </a>
+
+          <div className="footer-bottom">
+            <span className="footer-copy">© 2026 Automaly.pl</span>
+            <nav className="footer-legal">
+              <Link href="/polityka-prywatnosci">Polityka Prywatności</Link>
+              <Link href="/regulamin">Regulamin</Link>
+            </nav>
           </div>
         </div>
- 
-        {/* Bottom row: copyright | legal links */}
-        <div className="footer-bottom">
-          <span className="footer-copy">© 2026 Automaly.pl</span>
-          <nav className="footer-legal">
-            <Link href="/polityka-prywatnosci">Polityka Prywatności</Link>
-            <Link href="/regulamin">Regulamin</Link>
-          </nav>
-        </div>
-      </div>
- 
-      <style jsx>{`
-        .footer {
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
-          padding: 48px 0 32px;
-        }
- 
-        .footer-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-          padding: 0 32px;
-          display: flex;
-          flex-direction: column;
-          gap: 32px;
-        }
- 
-        .footer-top {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          gap: 24px;
-        }
- 
-        .footer-brand {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
- 
-        .footer-logo {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          text-decoration: none;
-          color: rgba(255, 255, 255, 0.9);
-          font-size: 0.95rem;
-          font-weight: 500;
-          letter-spacing: -0.01em;
-        }
- 
-        .footer-logo:hover {
-          color: #fff;
-        }
- 
-        .footer-contact {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
- 
-        .footer-contact a {
-          font-size: 0.8rem;
-          color: rgba(255, 255, 255, 0.38);
-          text-decoration: none;
-          letter-spacing: 0.01em;
-          transition: color 0.2s;
-        }
- 
-        .footer-contact a:hover {
-          color: rgba(255, 255, 255, 0.65);
-        }
- 
-        .footer-social {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
- 
-        .social-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          color: rgba(255, 255, 255, 0.35);
-          text-decoration: none;
-          transition: color 0.2s, background 0.2s;
-        }
- 
-        .social-link:hover {
-          color: rgba(255, 255, 255, 0.75);
-          background: rgba(255, 255, 255, 0.06);
-        }
- 
-        .footer-bottom {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 24px;
-          border-top: 1px solid rgba(255, 255, 255, 0.06);
-        }
- 
-        .footer-copy {
-          font-size: 0.75rem;
-          color: rgba(255, 255, 255, 0.25);
-          letter-spacing: 0.01em;
-        }
- 
-        .footer-legal {
-          display: flex;
-          align-items: center;
-          gap: 24px;
-        }
- 
-        .footer-legal a {
-          font-size: 0.75rem;
-          color: rgba(255, 255, 255, 0.25);
-          text-decoration: none;
-          letter-spacing: 0.01em;
-          transition: color 0.2s;
-        }
- 
-        .footer-legal a:hover {
-          color: rgba(255, 255, 255, 0.55);
-        }
- 
-        @media (max-width: 640px) {
-          .footer-top {
-            flex-direction: column;
-            gap: 20px;
-          }
- 
-          .footer-social {
-            gap: 2px;
-          }
- 
-          .footer-bottom {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-          }
-        }
-      `}</style>
-    </footer>
+      </footer>
     </>
   )
 }
