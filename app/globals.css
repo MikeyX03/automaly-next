@@ -493,18 +493,26 @@ footer {
   font-size: 13px;
   color: rgba(255,255,255,0.25);
 }
-.footer-legal-nav {
+.footer-bottom .footer-legal,
+.footer-legal {
   display: flex;
   align-items: center;
   gap: 24px;
-}
-.footer-legal-nav a {
   font-size: 13px;
+}
+
+.footer-bottom .footer-legal a,
+.footer-legal a {
   color: rgba(255,255,255,0.25);
   text-decoration: none;
   transition: color 0.2s;
+  font-size: 13px;
 }
-.footer-legal-nav a:hover { color: rgba(255,255,255,0.55); }
+
+.footer-bottom .footer-legal a:hover,
+.footer-legal a:hover {
+  color: rgba(255,255,255,0.55);
+}
 
 /* LEGAL PAGES */
 .legal-page {
