@@ -69,7 +69,7 @@ export default async function Home() {
             </ul>
           </div>
           <div>
-            <h3 style={{ fontSize: '20px', color: 'var(--primary)', marginBottom: '20px', fontWeight: 700 }}>Z Automaly</h3>
+            <h3 style={{ fontSize: '20px', color: '#fff', marginBottom: '20px', fontWeight: 500 }}>Z Automaly</h3>
             <ul className="solution-list">
               <li>Dane przepływają automatycznie między narzędziami</li>
               <li>Sekwencje follow-up działają same, we właściwym momencie</li>
