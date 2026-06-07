@@ -42,10 +42,10 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <span className="footer-copy">© 2026 Automaly.pl</span>
-          <nav className="footer-legal">
+          <div className="footer-legal">
             <Link href="/polityka-prywatnosci">Polityka Prywatności</Link>
             <Link href="/regulamin">Regulamin</Link>
-          </nav>
+          </div>
         </div>
       </div>
     </footer>
