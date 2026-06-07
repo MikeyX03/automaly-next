@@ -599,3 +599,27 @@ footer {
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
 @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
 @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+/* === HERO SPOTLIGHT === */
+.hero-spotlight {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(154, 63, 191, 0.13) 0%,
+    rgba(154, 63, 191, 0.04) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1;
+}
+
+.hero > *:not(.hero-spotlight) {
+  position: relative;
+  z-index: 2;
+}
