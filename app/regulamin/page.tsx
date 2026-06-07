@@ -122,6 +122,7 @@ export default function RegulamPage() {
             </ol>
           </section>
         </div>
+        </div>
       </main>
       <Footer />
     </>
