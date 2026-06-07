@@ -1,6 +1,7 @@
 // app/polityka-prywatnosci/page.tsx
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Polityka Prywatności — Automaly.pl",
