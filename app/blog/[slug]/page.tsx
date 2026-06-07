@@ -30,25 +30,26 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         <Link
           href="/blog"
           style={{
-            fontSize: '14px',
-            color: '#c084d0',
+            fontSize: '13px',
+            color: 'rgba(237,233,240,0.45)',
             textDecoration: 'none',
-            fontWeight: 500,
+            fontWeight: 400,
             display: 'inline-flex',
             alignItems: 'center',
-            gap: '4px',
-            marginBottom: '48px'
+            gap: '6px',
+            marginBottom: '48px',
+            letterSpacing: '0.01em',
           }}
         >
           ← Wróć do bloga
         </Link>
 
         <p style={{
-          fontSize: '12px',
-          color: '#c084d0',
-          fontWeight: 500,
+          fontSize: '11px',
+          color: 'rgba(237,233,240,0.38)',
+          fontWeight: 400,
           textTransform: 'uppercase',
-          letterSpacing: '1px',
+          letterSpacing: '0.08em',
           marginBottom: '16px'
         }}>
           {new Date(post.created_at).toLocaleDateString('pl-PL', {
@@ -59,9 +60,9 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
         </p>
 
         <h1 style={{
-          fontSize: '42px',
-          fontWeight: 800,
-          color: '#341539',
+          fontSize: 'clamp(28px, 5vw, 44px)',
+          fontWeight: 700,
+          color: '#fff',
           letterSpacing: '-1px',
           lineHeight: 1.1,
           marginBottom: '40px'
@@ -75,7 +76,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
             alt={post.title}
             style={{
               width: '100%',
-              borderRadius: '12px',
+              borderRadius: '10px',
               marginBottom: '48px',
               maxHeight: '480px',
               objectFit: 'cover'
