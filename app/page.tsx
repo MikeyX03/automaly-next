@@ -1,9 +1,9 @@
 import { supabase } from '@/lib/supabase'
 import Navbar from './components/navbar'
+import HeroSpotlight from './components/HeroSpotlight'
 import ContactForm from './components/ContactForm'
 import Link from 'next/link'
 import Image from 'next/image'
-import HeroSpotlight from './components/HeroSpotlight'
 
 export const dynamic = 'force-dynamic'
 
@@ -38,8 +38,7 @@ export default async function Home() {
         cta={navbar.cta}
       />
 
-      <section style={{ paddingTop: '64px' }}>
-        <HeroSpotlight>
+      <HeroSpotlight>
           <div className="hero-eyebrow">
             <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony internetowe'}
           </div>
@@ -50,8 +49,7 @@ export default async function Home() {
             <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
           </div>
           <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
-        </HeroSpotlight>
-      </section>
+      </HeroSpotlight>
 
       <section className="problem" id="problem">
         <div style={{ textAlign: 'center', marginBottom: '16px' }}>
