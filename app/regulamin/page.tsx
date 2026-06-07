@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Navbar from "@/app/components/navbar";
+import Footer from "@/app/components/footer";
 
 export const metadata: Metadata = {
   title: "Regulamin — Automaly.pl",
@@ -7,8 +9,10 @@ export const metadata: Metadata = {
 
 export default function RegulamPage() {
   return (
-    <main className="legal-page">
-      <div className="legal-container">
+    <>
+      <Navbar />
+      <main className="legal-page">
+        <div className="legal-container">
         <header className="legal-header">
           <p className="legal-label">Dokument prawny</p>
           <h1 className="legal-title">Regulamin</h1>
@@ -118,7 +122,8 @@ export default function RegulamPage() {
             </ol>
           </section>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
