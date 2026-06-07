@@ -3,6 +3,7 @@ import Navbar from './components/navbar'
 import ContactForm from './components/ContactForm'
 import Link from 'next/link'
 import Image from 'next/image'
+import HeroSpotlight from './components/HeroSpotlight'
 
 export const dynamic = 'force-dynamic'
 
@@ -38,7 +39,7 @@ export default async function Home() {
       />
 
       <section style={{ paddingTop: '64px' }}>
-        <div className="hero">
+        <HeroSpotlight>
           <div className="hero-eyebrow">
             <span className="hero-eyebrow-dot"></span> {hero.eyebrow || 'Automatyzacja · AI · Strony internetowe'}
           </div>
@@ -49,7 +50,7 @@ export default async function Home() {
             <a href="#proces" className="btn-secondary">{hero.cta_secondary || 'Jak to działa?'}</a>
           </div>
           <div className="risk-badge">{hero.badge || 'Bez kosztów. Bez zobowiązań. Bez konieczności wiedzy technicznej.'}</div>
-        </div>
+        </HeroSpotlight>
       </section>
 
       <section className="problem" id="problem">
